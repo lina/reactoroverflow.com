@@ -3,7 +3,12 @@
 /**
  * Route configuration for the RDash module.
  */
-angular.module('RDash')
+angular.module('RDash', [
+  'RDash.create', 
+  'RDash.post',
+  'RDash.postlist',
+  'ngRoute'
+])
 .config(['$stateProvider', '$urlRouterProvider',
   function($stateProvider, $urlRouterProvider) {
 
@@ -22,10 +27,10 @@ angular.module('RDash')
         templateUrl: 'templates/post.html',
         controller: 'PostCtrl'
       })
-      .state('ask', {
-        url: '/ask',
-        templateUrl: 'templates/ask.html',
-        controller: 'AskCtrl'
+      .state('create', {
+        url: '/create',
+        templateUrl: 'templates/create.html',
+        controller: 'CreateCtrl'
       })
       .state('tables', {
         url: '/tables',
