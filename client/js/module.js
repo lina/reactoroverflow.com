@@ -1,1 +1,3 @@
-angular.module('RDash', ['ui.bootstrap', 'ui.router', 'ngCookies', 'RDash.services']);
+'use strict';
+
+angular.module('RDash', ['ui.bootstrap', 'ui.router', 'ngCookies', 'RDash.services', 'ngTagsInput']);
