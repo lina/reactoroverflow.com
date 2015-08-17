@@ -28,12 +28,12 @@ io.sockets.on('connection', function(socket){
 
   socket.on('send message', function(data, receiverUser, callback){
     var msg = data.trim();
-    var name = receiverUser.slice(6);
+    var name = receiverUser;
     var id = users[name].id;
     if (name in users){      
       users[name].emit('whisper', {msg: msg, nick: socket.nickname});
       // socket.broadcast.to(id).emit('whisper', {msg: msg, nick: socket.nickname});
-      socket.emit('whisper', {msg: msg, nick: socket.nickname});
+      socket.emit('new message', {msg: msg, nick: socket.nickname});
     } else {
       callback('Error!  Enter a valid user.');
     };
