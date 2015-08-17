@@ -31,13 +31,10 @@ angular.module('RDash')
     });
     
     socket.on('whisper', function(data){
-      console.log('----------------->data.nick', data.nick);
-      console.log('--------------> $rootScope.selectedUserID', $rootScope.selectedUserID);
       if(data.nick === $rootScope.selectedUserID) {
         $chat.append('<span class="whisper"><b>' + data.nick + ': </b>' + data.msg + "</span><br/>");
       } else {
         $chat.append('<span class="whisper"><b>[Message from another user] ' + data.nick + ': </b>' + data.msg + "</span><br/>");
-        // $chat.append('<span class="whisper"><b>' + data.nick + 'is trying to send you a message </b></span><br/>');
       }
     });
   });

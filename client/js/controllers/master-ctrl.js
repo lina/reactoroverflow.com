@@ -20,14 +20,9 @@ function MasterCtrl($rootScope, $scope, $cookieStore, Posts) {
       $("body").click(function(event) {
         if(event.target.id) {        
           var eventTargetId = event.target.id.slice(6);
-          console.log('**************************', eventTargetId);
-          console.log('************************** $rootScope.importedListOfUsers', $rootScope.importedListOfUsers);
           if($rootScope.importedListOfUsers.hasOwnProperty(eventTargetId)) {
             $rootScope.selectedUserID = eventTargetId;
-            console.log("new userid saved");
           }
-          console.log('click event fired, new event.target.id is:', event.target.id);
-          // $stateParams.postID = $rootScope.selectedUserID.slice(6);
         };
       });
 
@@ -35,7 +30,6 @@ function MasterCtrl($rootScope, $scope, $cookieStore, Posts) {
       });
       
       socket.on('usernames', function(data){
-        // $rootScope.importedListOfUsers = data;
         for (var i = 0 ; i < data.length; i++) {
           $rootScope.importedListOfUsers[data[i]] = true;
         }
