@@ -42,7 +42,7 @@ function MasterCtrl($rootScope, $scope, $cookieStore, Posts) {
         }
         for (var i = 0 ; i < newDataArray.length; i++) {
           html += '<li class="sidebar-list"><a id="userid' + newDataArray[i] + '" href="#/chat/' + newDataArray[i] + '"> ' + newDataArray[i] + '</a></li>';
-        };
+        }
         $usersIDDiv.html(html);
       });
     });
