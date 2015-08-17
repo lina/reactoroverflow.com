@@ -7,10 +7,7 @@
 angular.module('RDash')
 .controller('ChatCtrl', function ChatCtrl ($scope, $rootScope) {
   jQuery(function($){
-    // var $nickForm = $('#setNick');
-    // var $nickError = $('#nickError');
-    // var $nickBox = $('#nickname');
-    // var $usersList = $('#usersList');
+    socket;
     var $messageForm = $('#send-message');
     var $messageBox = $('#message');
     var $chat = $('#chat');
