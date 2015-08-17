@@ -14,11 +14,12 @@ function MasterCtrl($rootScope, $scope, $cookieStore, Posts) {
     var mobileView = 992;
     var $users = $('#users');
 
-    var selectedUserID;
+    // var selectedUserID;
     jQuery(function($){
       $("body").click(function(event) {
         if(event.target.id) {        
           $rootScope.selectedUserID = event.target.id;
+          console.log('click event fired, new event.target.id is:', event.target.id);
         };
       });
 

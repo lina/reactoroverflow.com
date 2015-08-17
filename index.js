@@ -12,12 +12,10 @@ http.listen(4000, function(){
 
 io.sockets.on('connection', function(socket){
   socket.on('new user', function(data, callback){
-    console.log('socket.on new user, data', data);
     if (data in users){
       callback(false);
     } else {
       callback(true);
-      console.log('-------------------> socket.on users, socket:', socket);
       socket.nickname = data;
       users[socket.nickname] = socket;
       updateNicknames();
@@ -29,21 +27,16 @@ io.sockets.on('connection', function(socket){
   };
 
   socket.on('send message', function(data, receiverUser, callback){
-    console.log("hello");
-    console.log('---------------------->data',data);
-    console.log('---------------------->receiverUser',receiverUser);
-
     var msg = data.trim();
     var name = receiverUser.slice(6);
-    console.log('---------------------->users',users);
-    console.log('---------------------->users[name]',users[name]);
-
-    if(name in users){
+    var id = users[name].id;
+    if (name in users){      
       users[name].emit('whisper', {msg: msg, nick: socket.nickname});
+      // socket.broadcast.to(id).emit('whisper', {msg: msg, nick: socket.nickname});
       socket.emit('whisper', {msg: msg, nick: socket.nickname});
     } else {
       callback('Error!  Enter a valid user.');
-    }
+    };
   });
 
   // socket.on('send message', function(data, callback){
