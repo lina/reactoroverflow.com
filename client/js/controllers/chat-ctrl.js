@@ -35,7 +35,7 @@ angular.module('RDash')
         $chat.append('<span class="whisper"><b>' + data.nick + ': </b>' + data.msg + "</span><br/>");
       } else {
         $chat.append('<span class="whisper"><b>[Message from another user] ' + data.nick + ': </b>' + data.msg + "</span><br/>");
-      };
+      }
     });
   });
 });
