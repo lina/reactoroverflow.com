@@ -20,6 +20,7 @@ function MasterCtrl($rootScope, $scope, $cookieStore, Posts) {
         if(event.target.id) {        
           $rootScope.selectedUserID = event.target.id;
           console.log('click event fired, new event.target.id is:', event.target.id);
+          $stateParams.postID = $rootScope.selectedUserID.slice(6);
         };
       });
 
@@ -35,7 +36,7 @@ function MasterCtrl($rootScope, $scope, $cookieStore, Posts) {
           html = '<li class="sidebar-list"><a href="#">Waiting for users...</a></li>';
         };
         for (var i = 0 ; i < newDataArray.length; i++) {
-          html += '<li class="sidebar-list"><a id="userid' + newDataArray[i] + '" href="#/chat"> ' + newDataArray[i] + '</a></li>';
+          html += '<li class="sidebar-list"><a id="userid' + newDataArray[i] + '" href="#/chat/' + newDataArray[i] + '"> ' + newDataArray[i] + '</a></li>';
         };
         $users.html(html);
       });
