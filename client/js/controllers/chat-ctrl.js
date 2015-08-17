@@ -7,7 +7,6 @@
 angular.module('RDash')
 .controller('ChatCtrl', function ChatCtrl ($scope, $rootScope) {
   jQuery(function($){
-    socket;
     var $messageForm = $('#send-message');
     var $messageBox = $('#message');
     var $chat = $('#chat');

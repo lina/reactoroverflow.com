@@ -30,8 +30,8 @@ function MasterCtrl($rootScope, $scope, $cookieStore, Posts) {
       });
       
       socket.on('usernames', function(data){
-        for (var i = 0 ; i < data.length; i++) {
-          $rootScope.importedListOfUsers[data[i]] = true;
+        for (var j = 0 ; j < data.length; j++) {
+          $rootScope.importedListOfUsers[data[j]] = true;
         }
         var html = '';
         var newDataArray = _.filter(data, function(eachUserName) {
