@@ -44,5 +44,3 @@ io.sockets.on('connection', function(socket){
     updateNicknames();
   });
 });
-
-// module.exports = io;
