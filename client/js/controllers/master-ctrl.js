@@ -22,7 +22,7 @@ function MasterCtrl($rootScope, $scope, $cookieStore, Posts) {
           var eventTargetId = event.target.id.slice(6);
           if($rootScope.importedListOfUsers.hasOwnProperty(eventTargetId)) {
             $rootScope.selectedUserID = eventTargetId;
-          }
+          };
         };
       });
 
@@ -32,7 +32,7 @@ function MasterCtrl($rootScope, $scope, $cookieStore, Posts) {
       socket.on('usernames', function(data){
         for (var i = 0 ; i < data.length; i++) {
           $rootScope.importedListOfUsers[data[i]] = true;
-        }
+        };
         var html = '';
         var newDataArray = _.filter(data, function(eachUserName) {
           return eachUserName !== user.login;
