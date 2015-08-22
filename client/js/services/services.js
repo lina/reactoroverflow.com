@@ -60,19 +60,10 @@ angular.module('RDash.services', [])
 })
 .factory('Comments', function ($http) {
 
-  var getComments = function(cb){
+  var getComments = function(postID, cb){
     $http({
       method: 'GET',
-      url: '/api/comments'
-    }).then(function (resp) {
-      cb(resp.data);
-    });
-  };
-
-  var getComment = function(postID, cb){
-    $http({
-      method: 'GET',
-      url: '/api/comments/'+postID
+      url: '/api/comments?postID='+postID
     }).then(function (resp) {
       cb(resp.data);
     });
@@ -88,9 +79,24 @@ angular.module('RDash.services', [])
     });
   };
 
+  var upVote = function(commentID){
+    return $http({
+      method: 'POST',
+      url: '/api/comments/'+commentID+'/upvote'
+    });
+  };
+
+  var downVote = function(commentID){
+    return $http({
+      method: 'POST',
+      url: '/api/comments/'+commentID+'/downvote'
+    });
+  };
+
   return {
+    upVote: upVote,
+    downVote: downVote,
     getComments: getComments,
-    getComment: getComment,
     addComment: addComment
   };
 });
